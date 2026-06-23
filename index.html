@@ -333,30 +333,6 @@
     });
   })();
 </script>
-	<script>
-		// Press M to mute/unmute the game
-let gameMuted = false;
-
-document.addEventListener("keydown", (e) => {
-    if (e.key.toLowerCase() === "m") {
-        gameMuted = !gameMuted;
-
-        // Mute HTML audio/video
-        document.querySelectorAll("audio, video").forEach(media => {
-            media.muted = gameMuted;
-        });
-
-        // Mute Unity WebAudio if available
-        if (typeof unityInstance !== "undefined" && unityInstance.SendMessage) {
-            try {
-                unityInstance.SendMessage("AudioListener", "set_volume", gameMuted ? 0 : 1);
-            } catch (err) {}
-        }
-
-        console.log(gameMuted ? "🔇 Muted" : "🔊 Unmuted");
-    }
-});
-	</script>		
 
 
 

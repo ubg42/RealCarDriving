@@ -184,6 +184,7 @@
         }
 
         loadGame();
+
     </script>
 	
 	<!-- GOOGLE -->
@@ -331,6 +332,43 @@
       setTimeout(showAd, reappearDelay);
     });
   })();
+          let muted = false;
+
+document.addEventListener("keydown", (e) => {
+    if (e.key.toLowerCase() === "m") {
+        muted = !muted;
+
+        if (window.AudioContext || window.webkitAudioContext) {
+            const ctx = window.audioContext || window.gameAudioContext;
+            if (ctx) {
+                muted ? ctx.suspend() : ctx.resume();
+            }
+        }
+
+        document.querySelectorAll("audio, video").forEach(media => {
+            media.muted = muted;
+        });
+    }
+});
+	
+let muted = false;
+
+document.addEventListener("keydown", (e) => {
+    if (e.key.toLowerCase() === "m") {
+        muted = !muted;
+
+        if (window.AudioContext || window.webkitAudioContext) {
+            const ctx = window.audioContext || window.gameAudioContext;
+            if (ctx) {
+                muted ? ctx.suspend() : ctx.resume();
+            }
+        }
+
+        document.querySelectorAll("audio, video").forEach(media => {
+            media.muted = muted;
+        });
+    }
+});
 </script>
 
 
